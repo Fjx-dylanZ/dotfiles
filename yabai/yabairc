@@ -1,0 +1,192 @@
+#!/usr/bin/env sh
+
+launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist >/dev/null 2>&1 &
+# debug toggle
+#yabai -m config debug_output on
+yabai -m rule --add subrole="^AXSystemDialog$" manage=off mouse_follows_focus=off
+# Scripting Addition (SIP Disabled)
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa ## sha256 checked
+
+# Global Window Transparency
+
+yabai -m config active_window_opacity 0.95
+yabai -m config normal_window_opacity 0.90
+yabai -m config window_opacity on
+yabai -m config window_opacity_duration 0.31
+#YABAI STUFF
+
+# Animation duration for various operations.
+#yabai -m config window_animation_duration 0.30
+#yabai -m config window_animaiton_easing ease_in_out_cubic
+
+# bsp or float (default: bsp)
+#yabai -m config layout bsp
+# DEBUG TOGGLE
+yabai -m config debug_output off
+# My custom space names for my 3 monitor setup. These names are used in some of my scripts.
+yabai -m space 1 --label one
+yabai -m space 2 --label two
+yabai -m space 3 --label three
+yabai -m space 4 --label four
+yabai -m space 5 --label five
+yabai -m space 6 --label six
+yabai -m space 9 --label nine
+
+# float system preferences. Most of these just diable Yabai form resizing them.
+yabai -m rule --add app="^System Settings$" sticky=on manage=off
+yabai -m rule --add app="^Rewind.*$" manage=off sub-layer=above opacity=1
+yabai -m rule --add app="^Fig.*$" manage=off sub-layer=above
+yabai -m rule --add title="^Fig.*$" manage=off sub-layer=above
+yabai -m rule --add title="^Rewind.*$" manage=off mouse_follows_focus=off opacity=1
+yabai -m rule --add app="^Homerow$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^1Password$" sticky=on manage=off
+yabai -m rule --add app="^Superkey$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Copilot$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Setapp$" sticky=on manage=off
+yabai -m rule --add app="^VampireSurvivors$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Steam$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Apollo$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Slack$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Cron$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Slidepad$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Things$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Music$" title="^MiniPlayer$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Surge$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Hologram Desktop$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^zoom.us$" sticky=on sub-layer=above manage=off
+## Nanoleaf Desktop
+yabai -m rule --add app="^Nanoleaf Desktop$" sticky=on sub-layer=above manage=off
+## WeChat
+yabai -m rule --add app="^WeChat$" manage=off
+yabai -m rule --add app="^iStat (Menus|Menus Status)$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Karabiner-Elements$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Sidebar$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Keyboard Scroller$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Finder$" sticky=on manage=off
+yabai -m rule --add app="^Keka$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Alfred Preferences$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Disk Utility$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^System Information$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Activity Monitor$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Calendar$" manage=off
+yabai -m rule --add app="^Path Finder$" manage=off
+yabai -m rule --add app="^TeamViewer$" sticky=off sub-layer=above manage=off
+yabai -m rule --add app="^Spotify$" manage=off
+yabai -m rule --add app="^iTerm2$" manage=off
+yabai -m rule --add app="^FaceTime$" manage=off sub-layer=above
+yabai -m rule --add app="^Flux$" manage=off
+yabai -m rule --add app="^Time Out$" manage=off
+yabai -m rule --add app="^perl_client_app$" manage=off
+yabai -m rule --add app="^console$" manage=off
+yabai -m rule --add app="^Harvest$" manage=off
+yabai -m rule --add app="^CiscoSparkHelper$" manage=off
+yabai -m rule --add app="^Logi Options$" manage=off
+yabai -m rule --add app="^Cisco Webex Start$" manage=off
+yabai -m rule --add app="^Private Internet Access$" manage=off
+yabai -m rule --add app="^DXFinderWindowServer$" manage=off
+#yabai -m rule --add app="^Code$" opacity=0.94
+yabai -m rule --add app="^Airfoil$" manage=off
+yabai -m rule --add app="^Microsoft Remote Desktop$" manage=off
+yabai -m rule --add app="^CleanShot X$" manage=off
+yabai -m rule --add app="^Nebula$" manage=off
+yabai -m rule --add app="^Messages$" manage=off
+yabai -m rule --add app="^Warp$" manage=off
+#find ~/Library/Parallels/Applications\ Menus/ -maxdepth 3 -type f | awk -F'/' '{ print $NF; }' | awk '{$1=$1};1' | sort | uniq | tr "\n" "\0" | xargs -0 -I{} yabai -m rule --add app="^{}\$" title=".*" manage=on
+yabai -m config split_type auto
+## Some random global settings
+#yabai -m config focus_follows_mouse          autofocus
+yabai -m config focus_follows_mouse          off
+# New window spawns to the right if vertical split, or bottom if horizontal split
+yabai -m config window_placement second_child
+# Floating window always on top
+#yabai -m config window_topmost off #dep
+#yabai -m config window_shadow float
+
+#yabai -m config normal_window_opacity        0.97
+#yabai -m config window_border                on | off
+## WITH SIP ENABLED (Installed Limelight seperately, Don't need this)
+#yabai -m config window_border off
+## WTIH SIP DISABLED (Limelight build into Yabai, enable it here)
+#yabai -m config window_border off #dep
+#yabai -m config window_border_width 4
+#yabai -m config active_window_border_color 0xFF93C47D
+#yabai -m config active_window_border_color 0xFFFCBC0A
+#yabai -m config normal_window_border_color 0x00FFFFFF
+yabai -m config insert_feedback_color 0xff8601af
+
+# Window border blur
+# yabai -m config window_border_blur off
+
+## focused window border only
+# yabai -m query --windows --space | jq -re '.[] | select(.["has-focus"] == true) | .id'
+# yabai -m signal --add event=window_focused action="~/.config/CustomScripts/SwitchSpaces/active_border.sh" # deprecated
+
+## some other settings
+yabai -m config auto_balance on
+yabai -m config split_ratio 0.50
+# # # set mouse interaction modifier key (default: fn)
+yabai -m config mouse_modifier ctrl
+# set modifier + right-click (2) drag to resize window (default: resize)
+yabai -m config mouse_action2 resize
+# set modifier + left-click (1) drag to move window (default: move)
+yabai -m config mouse_action1 move
+
+# set mouse follow focus (default: off)
+yabai -m config mouse_follows_focus off
+
+# general space settings
+#yabai -m config focused_border_skip_floating  1
+#yabai -m config --space 3 layout             float
+
+## Change how yabai looks
+yabai -m config layout bsp
+yabai -m config top_padding 12
+yabai -m config bottom_padding 12
+yabai -m config left_padding 12
+yabai -m config right_padding 12
+yabai -m config window_gap 12
+
+borders &
+#Limelight addon (Kill it and start it each time Yabai starts)
+#killall limelight &>/dev/null
+#limelight &>/dev/null &
+
+# #Ubersicht widget bar stuff
+#yabai -m signal --add event=space_changed \
+#action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-primary-jsx\"'"
+#yabai -m signal --add event=display_changed \
+#action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-primary-jsx\"'"
+
+#yabai -m signal --add event=space_changed \
+#action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-secondary-jsx\"'"
+#yabai -m signal --add event=display_changed \
+#action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"nibar-spaces-secondary-jsx\"'"
+
+# signals
+# yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+#yabai -m signal --add event=space_changed action="yabai -m window --focus $(yabai -m query --windows --window | jq ".id")"
+# yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+
+#testing signals
+# yabai -m signal --add event=window_destroyed action="terminal-notifier -message 'window_destroyed'"
+# yabai -m signal --add event=application_terminated action="terminal-notifier -message 'application_terminated'"
+
+## If I close the active window, focus on any other visible window.
+## yabai -m window --focus recent
+#yabai -m signal --add event=window_destroyed action="yabai -m window --focus recent"
+#yabai -m signal --add event=window_destroyed action="zsh ~/.config/CustomScripts/SwitchSpaces/window-focus-on-destroy.sh"
+# yabai -m signal --add event=space_changed action="export CUR_ACTIVE_APP=\"iTerm2\""
+
+## for sketchybar
+yabai -m signal --add event=window_created action="sketchybar --trigger window_change_yabai &> /dev/null"
+yabai -m signal --add event=window_destroyed action="sketchybar -m --trigger window_change_yabai &> /dev/null"
+# focus window after active space changes
+yabai -m signal --add event=space_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
+# focus window after active display changes
+yabai -m signal --add event=display_changed action="yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id)"
+#yabai -m signal --add event=window_created action="echo 'window_change signal yabai init' > /tmp/window_chang"
+echo "yabai configuration loaded.."
+
+#END
