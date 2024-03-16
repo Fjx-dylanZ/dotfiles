@@ -1,0 +1,8 @@
+*
+!yabai/
+!CustomScripts/
+!borders/
+!skhd/
+!sketchybar/
+!.gitignore
+**/.DS_Store
