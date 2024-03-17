@@ -30,7 +30,7 @@ hyper - f : yabai -m window --toggle zoom-fullscreen
 lalt - f : yabai -m window --toggle native-fullscreen
 ## split
 hyper - g : yabai -m window --toggle split
-	## float
+## float
 hyper - t : ~/.config/CustomScripts/toggle-window-floating-tiling.sh
 ## sticky
 hyper - 0x2A : yabai -m window --toggle sticky #\ key
@@ -41,6 +41,8 @@ hyper - p : ~/.config/CustomScripts/toggle-pip.sh
 # toggle space float/bsp layout
 lshift + alt - t : ~/.config/CustomScripts/SwitchSpaces/toggle-layout.sh && terminal-notifier -message "layout toggled"
 
+# raycast
+rcmd - space : skhd -k "shift + ctrl - end"
 # Arrow Keys
 lctrl - h : skhd -k "left"
 lctrl - j : skhd -k "down"
@@ -100,6 +102,17 @@ lalt + lshift - 0x21 :
 lalt + lshift - 0x1E : 
 	index="$(yabai -m query --windows --window | jq -re ".id")" && \
 	yabai -m window --space next && yabai -m space --focus next && \
+	yabai -m window --focus "$index"
+
+# move active window to next display
+lalt + lshift + lctrl - 0x21 :
+	index="$(yabai -m query --windows --window | jq -re ".id")" && \
+	yabai -m window --display prev && yabai -m display --focus prev && \
+	yabai -m window --focus "$index"
+
+lalt + lshift + lctrl - 0x1E :
+	index="$(yabai -m query --windows --window | jq -re ".id")" && \
+	yabai -m window --display next && yabai -m display --focus next && \
 	yabai -m window --focus "$index"
 
 # resize window
