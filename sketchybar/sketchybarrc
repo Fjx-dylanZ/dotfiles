@@ -61,6 +61,8 @@ source "$ITEMS_DIR/clock.sh"
 source "$ITEMS_DIR/volume.sh"
 # battery
 source "$ITEMS_DIR/battery.sh"
+# network
+source "$ITEMS_DIR/network.sh"
 # some aliases for vanilla items
 sketchybar --add alias "Rewind,Item-0" right \
            --set "Rewind,Item-0" update_freq=20
