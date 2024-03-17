@@ -1,8 +1,13 @@
 *
 !yabai/
+!yabai/**
 !CustomScripts/
+!CustomScripts/**
 !borders/
+!borders/**
 !skhd/
+!skhd/**
 !sketchybar/
-!.gitignore
-**/.DS_Store
+!sketchybar/**
+
+*log*
