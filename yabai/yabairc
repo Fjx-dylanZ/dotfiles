@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist >/dev/null 2>&1 &
 # debug toggle
 #yabai -m config debug_output on
 yabai -m rule --add subrole="^AXSystemDialog$" manage=off mouse_follows_focus=off
@@ -35,47 +34,47 @@ yabai -m space 9 --label nine
 
 # float system preferences. Most of these just diable Yabai form resizing them.
 yabai -m rule --add app="^System Settings$" sticky=on manage=off
-yabai -m rule --add app="^Rewind.*$" manage=off sub-layer=above opacity=1
-yabai -m rule --add app="^Fig.*$" manage=off sub-layer=above
-yabai -m rule --add title="^Fig.*$" manage=off sub-layer=above
+yabai -m rule --add app="^Rewind.*$" manage=off opacity=1
+yabai -m rule --add app="^Fig.*$" manage=off 
+yabai -m rule --add title="^Fig.*$" manage=off 
 yabai -m rule --add title="^Rewind.*$" manage=off mouse_follows_focus=off opacity=1
-yabai -m rule --add app="^Homerow$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Homerow$" sticky=on manage=off
 yabai -m rule --add app="^1Password$" sticky=on manage=off
-yabai -m rule --add app="^Superkey$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Copilot$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Superkey$" sticky=on manage=off
+yabai -m rule --add app="^Copilot$" sticky=on manage=off
 yabai -m rule --add app="^Setapp$" sticky=on manage=off
-yabai -m rule --add app="^VampireSurvivors$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Steam$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Apollo$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Slack$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Cron$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Slidepad$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Things$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Music$" title="^MiniPlayer$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Surge$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Hologram Desktop$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^zoom.us$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^VampireSurvivors$" sticky=on manage=off
+yabai -m rule --add app="^Steam$" sticky=on manage=off
+yabai -m rule --add app="^Apollo$" sticky=on manage=off
+yabai -m rule --add app="^Slack$" sticky=on manage=off
+yabai -m rule --add app="^Cron$" sticky=on manage=off
+yabai -m rule --add app="^Slidepad$" sticky=on manage=off
+yabai -m rule --add app="^Things$" sticky=on manage=off
+yabai -m rule --add app="^Music$" title="^MiniPlayer$" sticky=on manage=off
+yabai -m rule --add app="^Surge$" sticky=on manage=off
+yabai -m rule --add app="^Hologram Desktop$" sticky=on manage=off
+yabai -m rule --add app="^zoom.us$" sticky=on manage=off
 ## Nanoleaf Desktop
-yabai -m rule --add app="^Nanoleaf Desktop$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Nanoleaf Desktop$" sticky=on manage=off
 ## WeChat
 yabai -m rule --add app="^WeChat$" manage=off
-yabai -m rule --add app="^iStat (Menus|Menus Status)$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Karabiner-Elements$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Sidebar$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Keyboard Scroller$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^iStat (Menus|Menus Status)$" sticky=on manage=off
+yabai -m rule --add app="^Karabiner-Elements$" sticky=on manage=off
+yabai -m rule --add app="^Sidebar$" sticky=on manage=off
+yabai -m rule --add app="^Keyboard Scroller$" sticky=on manage=off
+yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on manage=off
 yabai -m rule --add app="^Finder$" sticky=on manage=off
-yabai -m rule --add app="^Keka$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Alfred Preferences$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Disk Utility$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^System Information$" sticky=on sub-layer=above manage=off
-yabai -m rule --add app="^Activity Monitor$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Keka$" sticky=on manage=off
+yabai -m rule --add app="^Alfred Preferences$" sticky=on manage=off
+yabai -m rule --add app="^Disk Utility$" sticky=on manage=off
+yabai -m rule --add app="^System Information$" sticky=on manage=off
+yabai -m rule --add app="^Activity Monitor$" sticky=on manage=off
 yabai -m rule --add app="^Calendar$" manage=off
 yabai -m rule --add app="^Path Finder$" manage=off
-yabai -m rule --add app="^TeamViewer$" sticky=off sub-layer=above manage=off
+yabai -m rule --add app="^TeamViewer$" sticky=off manage=off
 yabai -m rule --add app="^Spotify$" manage=off
 yabai -m rule --add app="^iTerm2$" manage=off
-yabai -m rule --add app="^FaceTime$" manage=off sub-layer=above
+yabai -m rule --add app="^FaceTime$" manage=off 
 yabai -m rule --add app="^Flux$" manage=off
 yabai -m rule --add app="^Time Out$" manage=off
 yabai -m rule --add app="^perl_client_app$" manage=off
@@ -96,7 +95,7 @@ yabai -m rule --add app="^Warp$" manage=off
 #find ~/Library/Parallels/Applications\ Menus/ -maxdepth 3 -type f | awk -F'/' '{ print $NF; }' | awk '{$1=$1};1' | sort | uniq | tr "\n" "\0" | xargs -0 -I{} yabai -m rule --add app="^{}\$" title=".*" manage=on
 yabai -m config split_type auto
 ## Some random global settings
-#yabai -m config focus_follows_mouse          autofocus
+#yabai -m config focus_follows_mouse        autofocus
 yabai -m config focus_follows_mouse          off
 # New window spawns to the right if vertical split, or bottom if horizontal split
 yabai -m config window_placement second_child
