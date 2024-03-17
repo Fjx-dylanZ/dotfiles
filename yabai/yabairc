@@ -147,6 +147,12 @@ yabai -m config left_padding 12
 yabai -m config right_padding 12
 yabai -m config window_gap 12
 
+
+# tmpdir for storing window positions
+tempDir=/tmp/yabai-tiling-floating-toggle
+[ -d $tempDir ] && rm -rf $tempDir
+mkdir $tempDir
+
 borders &
 #Limelight addon (Kill it and start it each time Yabai starts)
 #killall limelight &>/dev/null

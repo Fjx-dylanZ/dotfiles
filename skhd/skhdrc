@@ -30,8 +30,8 @@ hyper - f : yabai -m window --toggle zoom-fullscreen
 lalt - f : yabai -m window --toggle native-fullscreen
 ## split
 hyper - g : yabai -m window --toggle split
-## float
-hyper - t : yabai -m window --toggle float
+	## float
+hyper - t : ~/.config/CustomScripts/toggle-window-floating-tiling.sh
 ## sticky
 hyper - 0x2A : yabai -m window --toggle sticky #\ key
 ## pip
