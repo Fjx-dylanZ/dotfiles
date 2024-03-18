@@ -129,6 +129,9 @@ lalt - j : yabai -m window --focus south
 lalt - k : yabai -m window --focus north
 lalt - l : yabai -m window --focus east
 
+# focus floating window
+lalt - o : ~/.config/CustomScripts/focus-between-floats.sh
+lalt - i : ~/.config/CustomScripts/focus-tiled.sh
 # warp window
 lalt + lshift - h : yabai -m window --warp west
 lalt + lshift - j : yabai -m window --warp south
