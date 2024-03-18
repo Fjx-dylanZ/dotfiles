@@ -10,14 +10,14 @@ sudo yabai --load-sa ## sha256 checked
 # Global Window Transparency
 
 yabai -m config active_window_opacity 0.95
-yabai -m config normal_window_opacity 0.90
+yabai -m config normal_window_opacity 0.87
 yabai -m config window_opacity on
 yabai -m config window_opacity_duration 0.31
 #YABAI STUFF
-
+yabai -m config external_bar all:26:0
 # Animation duration for various operations.
-#yabai -m config window_animation_duration 0.30
-#yabai -m config window_animaiton_easing ease_in_out_cubic
+yabai -m config window_animation_duration 0.35
+yabai -m config window_animaiton_easing ease_out_quint
 
 # bsp or float (default: bsp)
 #yabai -m config layout bsp
@@ -34,64 +34,14 @@ yabai -m space 9 --label nine
 
 # float system preferences. Most of these just diable Yabai form resizing them.
 yabai -m rule --add app="^System Settings$" sticky=on manage=off
-yabai -m rule --add app="^Rewind.*$" manage=off opacity=1
-yabai -m rule --add app="^Fig.*$" manage=off 
-yabai -m rule --add title="^Fig.*$" manage=off 
-yabai -m rule --add title="^Rewind.*$" manage=off mouse_follows_focus=off opacity=1
-yabai -m rule --add app="^Homerow$" sticky=on manage=off
-yabai -m rule --add app="^1Password$" sticky=on manage=off
-yabai -m rule --add app="^Superkey$" sticky=on manage=off
-yabai -m rule --add app="^Copilot$" sticky=on manage=off
-yabai -m rule --add app="^Setapp$" sticky=on manage=off
-yabai -m rule --add app="^VampireSurvivors$" sticky=on manage=off
-yabai -m rule --add app="^Steam$" sticky=on manage=off
-yabai -m rule --add app="^Apollo$" sticky=on manage=off
-yabai -m rule --add app="^Slack$" sticky=on manage=off
-yabai -m rule --add app="^Cron$" sticky=on manage=off
-yabai -m rule --add app="^Slidepad$" sticky=on manage=off
-yabai -m rule --add app="^Things$" sticky=on manage=off
-yabai -m rule --add app="^Music$" title="^MiniPlayer$" sticky=on manage=off
-yabai -m rule --add app="^Surge$" sticky=on manage=off
-yabai -m rule --add app="^Hologram Desktop$" sticky=on manage=off
-yabai -m rule --add app="^zoom.us$" sticky=on manage=off
-## Nanoleaf Desktop
-yabai -m rule --add app="^Nanoleaf Desktop$" sticky=on manage=off
-## WeChat
+yabai -m rule --add app="^Raycast$" sticky=off manage=off
+yabai -m rule --add app="^(Rewind.*|Music)$" title="^(Rewind.*|MiniPlayer)$" manage=off opacity=1 mouse_follows_focus=off
+yabai -m rule --add app="^(Todoist|Fig.*|Cisco Webex Start|Private Internet Access|DXFinderWindowServer|Airfoil|Microsoft Remote Desktop|CleanShot X|Nebula|Messages|Warp)$" manage=off
+yabai -m rule --add app="^(Homerow|1Password|Superkey|Copilot|Setapp|VampireSurvivors|Steam|Apollo|Slack|Cron|Slidepad|Things|Surge|Hologram Desktop|zoom.us|Nanoleaf Desktop|iStat Menus|iStat Menus Status|Karabiner-Elements|Sidebar|Keyboard Scroller|Karabiner-EventViewer|Finder|Keka|Alfred Preferences|Disk Utility|System Information|Activity Monitor)$" sticky=on manage=off
 yabai -m rule --add app="^WeChat$" manage=off
-yabai -m rule --add app="^iStat (Menus|Menus Status)$" sticky=on manage=off
-yabai -m rule --add app="^Karabiner-Elements$" sticky=on manage=off
-yabai -m rule --add app="^Sidebar$" sticky=on manage=off
-yabai -m rule --add app="^Keyboard Scroller$" sticky=on manage=off
-yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on manage=off
-yabai -m rule --add app="^Finder$" sticky=on manage=off
-yabai -m rule --add app="^Keka$" sticky=on manage=off
-yabai -m rule --add app="^Alfred Preferences$" sticky=on manage=off
-yabai -m rule --add app="^Disk Utility$" sticky=on manage=off
-yabai -m rule --add app="^System Information$" sticky=on manage=off
-yabai -m rule --add app="^Activity Monitor$" sticky=on manage=off
-yabai -m rule --add app="^Calendar$" manage=off
-yabai -m rule --add app="^Path Finder$" manage=off
+yabai -m rule --add app="^(Calendar|Path Finder|Spotify|iTerm2|FaceTime|Flux|Time Out|perl_client_app|console|Harvest|CiscoSparkHelper|Logi Options)$" manage=off
 yabai -m rule --add app="^TeamViewer$" sticky=off manage=off
-yabai -m rule --add app="^Spotify$" manage=off
-yabai -m rule --add app="^iTerm2$" manage=off
-yabai -m rule --add app="^FaceTime$" manage=off 
-yabai -m rule --add app="^Flux$" manage=off
-yabai -m rule --add app="^Time Out$" manage=off
-yabai -m rule --add app="^perl_client_app$" manage=off
-yabai -m rule --add app="^console$" manage=off
-yabai -m rule --add app="^Harvest$" manage=off
-yabai -m rule --add app="^CiscoSparkHelper$" manage=off
-yabai -m rule --add app="^Logi Options$" manage=off
-yabai -m rule --add app="^Cisco Webex Start$" manage=off
-yabai -m rule --add app="^Private Internet Access$" manage=off
-yabai -m rule --add app="^DXFinderWindowServer$" manage=off
 #yabai -m rule --add app="^Code$" opacity=0.94
-yabai -m rule --add app="^Airfoil$" manage=off
-yabai -m rule --add app="^Microsoft Remote Desktop$" manage=off
-yabai -m rule --add app="^CleanShot X$" manage=off
-yabai -m rule --add app="^Nebula$" manage=off
-yabai -m rule --add app="^Messages$" manage=off
-yabai -m rule --add app="^Warp$" manage=off
 #find ~/Library/Parallels/Applications\ Menus/ -maxdepth 3 -type f | awk -F'/' '{ print $NF; }' | awk '{$1=$1};1' | sort | uniq | tr "\n" "\0" | xargs -0 -I{} yabai -m rule --add app="^{}\$" title=".*" manage=on
 yabai -m config split_type auto
 ## Some random global settings
@@ -141,11 +91,21 @@ yabai -m config mouse_follows_focus off
 
 ## Change how yabai looks
 yabai -m config layout bsp
-yabai -m config top_padding 12
-yabai -m config bottom_padding 12
-yabai -m config left_padding 12
-yabai -m config right_padding 12
-yabai -m config window_gap 12
+yabai -m config top_padding 8
+yabai -m config bottom_padding 8
+yabai -m config left_padding 8
+yabai -m config right_padding 8
+yabai -m config window_gap 10
+
+
+# tmpdir for storing window positions
+tempDir=/tmp/yabai-tiling-floating-toggle
+[ -d $tempDir ] && rm -rf $tempDir
+mkdir $tempDir
+
+tempDirCenter=/tmp/yabai-floating-toggle-center
+[ -d $tempDirCenter ] && rm -rf $tempDirCenter
+mkdir $tempDirCenter
 
 borders &
 #Limelight addon (Kill it and start it each time Yabai starts)
@@ -175,7 +135,7 @@ borders &
 ## If I close the active window, focus on any other visible window.
 ## yabai -m window --focus recent
 #yabai -m signal --add event=window_destroyed action="yabai -m window --focus recent"
-#yabai -m signal --add event=window_destroyed action="zsh ~/.config/CustomScripts/SwitchSpaces/window-focus-on-destroy.sh"
+yabai -m signal --add event=window_destroyed action="~/.config/CustomScripts/SwitchSpaces/window-focus-on-destroy.sh"
 # yabai -m signal --add event=space_changed action="export CUR_ACTIVE_APP=\"iTerm2\""
 
 ## for sketchybar

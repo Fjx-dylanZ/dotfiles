@@ -31,7 +31,9 @@ lalt - f : yabai -m window --toggle native-fullscreen
 ## split
 hyper - g : yabai -m window --toggle split
 ## float
-hyper - t : yabai -m window --toggle float
+hyper - t : ~/.config/CustomScripts/toggle-window-floating-tiling.sh
+## center
+hyper - c : ~/.config/CustomScripts/toggle-center.sh
 ## sticky
 hyper - 0x2A : yabai -m window --toggle sticky #\ key
 ## pip
@@ -41,6 +43,8 @@ hyper - p : ~/.config/CustomScripts/toggle-pip.sh
 # toggle space float/bsp layout
 lshift + alt - t : ~/.config/CustomScripts/SwitchSpaces/toggle-layout.sh && terminal-notifier -message "layout toggled"
 
+# raycast
+rcmd - space : skhd -k "shift + ctrl - end"
 # Arrow Keys
 lctrl - h : skhd -k "left"
 lctrl - j : skhd -k "down"
@@ -102,6 +106,17 @@ lalt + lshift - 0x1E :
 	yabai -m window --space next && yabai -m space --focus next && \
 	yabai -m window --focus "$index"
 
+# move active window to next display
+lalt + lshift + lctrl - 0x21 :
+	index="$(yabai -m query --windows --window | jq -re ".id")" && \
+	yabai -m window --display prev && yabai -m display --focus prev && \
+	yabai -m window --focus "$index"
+
+lalt + lshift + lctrl - 0x1E :
+	index="$(yabai -m query --windows --window | jq -re ".id")" && \
+	yabai -m window --display next && yabai -m display --focus next && \
+	yabai -m window --focus "$index"
+
 # resize window
 hyper - h : yabai -m window --resize left:-20:0 || yabai -m window --resize right:-20:0
 hyper - j : yabai -m window --resize bottom:0:20 || yabai -m window --resize top:0:20
@@ -113,6 +128,13 @@ lalt - h : yabai -m window --focus west
 lalt - j : yabai -m window --focus south
 lalt - k : yabai -m window --focus north
 lalt - l : yabai -m window --focus east
+
+# focus floating window
+lalt - o : ~/.config/CustomScripts/focus-between-floats.sh
+lalt - i : yabai -m window --focus $(yabai -m query --windows --space | jq -re '[.[] | select(.["is-floating"] == false)][0].id')
+
+# toggle hide/unhide all floating windows
+lalt - u : ~/.config/CustomScripts/hide-all-floats.sh
 
 # warp window
 lalt + lshift - h : yabai -m window --warp west
@@ -127,9 +149,9 @@ alt + lshift - w : yabai -m window --swap north
 alt + lshift - s : yabai -m window --swap south
 
 # focus display
-hyper - 1 : yabai -m display --focus 1
-hyper - 2 : yabai -m display --focus 2
-hyper - 3 : yabai -m display --focus 3
+hyper - 1 : yabai -m display --focus 1 && osascript ~/.config/CustomScripts/SwitchSpaces/move-mouse.scpt
+hyper - 2 : yabai -m display --focus 2 && osascript ~/.config/CustomScripts/SwitchSpaces/move-mouse.scpt
+hyper - 3 : yabai -m display --focus 3 && osascript ~/.config/CustomScripts/SwitchSpaces/move-mouse.scpt
 
 fn - f : conda run -n base ~/.config/CustomScripts/notch-fullscreen.sh
 #fn - f : sudo frida -q -l ~/.config/CustomScripts/OverNotch.js -e "toggleFullScreen()" $(osascript -e 'tell application "System Events" to get unix id of first application process whose frontmost is true')
