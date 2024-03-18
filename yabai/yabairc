@@ -10,14 +10,14 @@ sudo yabai --load-sa ## sha256 checked
 # Global Window Transparency
 
 yabai -m config active_window_opacity 0.95
-yabai -m config normal_window_opacity 0.90
+yabai -m config normal_window_opacity 0.87
 yabai -m config window_opacity on
 yabai -m config window_opacity_duration 0.31
 #YABAI STUFF
 yabai -m config external_bar all:26:0
 # Animation duration for various operations.
-#yabai -m config window_animation_duration 0.30
-#yabai -m config window_animaiton_easing ease_in_out_cubic
+yabai -m config window_animation_duration 0.35
+yabai -m config window_animaiton_easing ease_out_quint
 
 # bsp or float (default: bsp)
 #yabai -m config layout bsp
