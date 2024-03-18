@@ -140,9 +140,9 @@ alt + lshift - w : yabai -m window --swap north
 alt + lshift - s : yabai -m window --swap south
 
 # focus display
-hyper - 1 : yabai -m display --focus 1
-hyper - 2 : yabai -m display --focus 2
-hyper - 3 : yabai -m display --focus 3
+hyper - 1 : yabai -m display --focus 1 && osascript ~/.config/CustomScripts/SwitchSpaces/move-mouse.scpt
+hyper - 2 : yabai -m display --focus 2 && osascript ~/.config/CustomScripts/SwitchSpaces/move-mouse.scpt
+hyper - 3 : yabai -m display --focus 3 && osascript ~/.config/CustomScripts/SwitchSpaces/move-mouse.scpt
 
 fn - f : conda run -n base ~/.config/CustomScripts/notch-fullscreen.sh
 #fn - f : sudo frida -q -l ~/.config/CustomScripts/OverNotch.js -e "toggleFullScreen()" $(osascript -e 'tell application "System Events" to get unix id of first application process whose frontmost is true')

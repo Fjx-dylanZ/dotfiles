@@ -131,7 +131,7 @@ borders &
 ## If I close the active window, focus on any other visible window.
 ## yabai -m window --focus recent
 #yabai -m signal --add event=window_destroyed action="yabai -m window --focus recent"
-#yabai -m signal --add event=window_destroyed action="zsh ~/.config/CustomScripts/SwitchSpaces/window-focus-on-destroy.sh"
+yabai -m signal --add event=window_destroyed action="~/.config/CustomScripts/SwitchSpaces/window-focus-on-destroy.sh"
 # yabai -m signal --add event=space_changed action="export CUR_ACTIVE_APP=\"iTerm2\""
 
 ## for sketchybar
