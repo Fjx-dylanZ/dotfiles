@@ -131,7 +131,7 @@ lalt - l : yabai -m window --focus east
 
 # focus floating window
 lalt - o : ~/.config/CustomScripts/focus-between-floats.sh
-lalt - i : ~/.config/CustomScripts/focus-tiled.sh
+lalt - i : yabai -m window --focus $(yabai -m query --windows --space | jq -re '[.[] | select(.["is-floating"] == false)][0].id')
 # warp window
 lalt + lshift - h : yabai -m window --warp west
 lalt + lshift - j : yabai -m window --warp south
