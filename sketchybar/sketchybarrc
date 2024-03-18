@@ -66,8 +66,14 @@ source "$ITEMS_DIR/timers.sh"
 # network
 source "$ITEMS_DIR/network.sh"
 # some aliases for vanilla items
-sketchybar --add alias "Rewind,Item-0" right \
-           --set "Rewind,Item-0" update_freq=20
+sketchybar --add alias "Rewind" right \
+           --set "Rewind" background.padding_left=-10 background.padding_right=-10 update_freq=20 alias.scale=0.8
+
+# sketchybar --add alias "Timing" right \
+#            --set "Timing" update_freq=30
+
+sketchybar --add alias "Notion Calendar" right \
+           --set "Notion Calendar" background.padding_left=-7 background.padding_right=-5 update_freq=30 alias.scale=0.95
 
 sketchybar --add bracket spaces '/space\..*/'               \
            --set         spaces background.color=0x40000000 \
