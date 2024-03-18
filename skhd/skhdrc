@@ -33,7 +33,7 @@ hyper - g : yabai -m window --toggle split
 ## float
 hyper - t : ~/.config/CustomScripts/toggle-window-floating-tiling.sh
 ## center
-hyper - c : yabai -m window --grid 5:5:1:1:3:3
+hyper - c : ~/.config/CustomScripts/toggle-center.sh
 ## sticky
 hyper - 0x2A : yabai -m window --toggle sticky #\ key
 ## pip

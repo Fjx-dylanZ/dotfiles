@@ -103,6 +103,10 @@ tempDir=/tmp/yabai-tiling-floating-toggle
 [ -d $tempDir ] && rm -rf $tempDir
 mkdir $tempDir
 
+tempDirCenter=/tmp/yabai-floating-toggle-center
+[ -d $tempDirCenter ] && rm -rf $tempDirCenter
+mkdir $tempDirCenter
+
 borders &
 #Limelight addon (Kill it and start it each time Yabai starts)
 #killall limelight &>/dev/null
