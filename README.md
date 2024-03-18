@@ -27,8 +27,8 @@ This repository contains my personal dotfiles for customizing my macOS developme
 
 4. Restart the services:
    ```
-   brew services restart yabai
-   brew services restart skhd
+   yabai --restart-service
+   skhd --restart-service
    brew services restart sketchybar
    ```
 
