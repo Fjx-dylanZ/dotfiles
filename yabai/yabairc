@@ -16,8 +16,8 @@ yabai -m config window_opacity_duration 0.31
 #YABAI STUFF
 yabai -m config external_bar all:26:0
 # Animation duration for various operations.
-yabai -m config window_animation_duration 0.35
-yabai -m config window_animaiton_easing ease_out_quint
+#yabai -m config window_animation_duration 0.35
+#yabai -m config window_animaiton_easing ease_out_quint
 
 # bsp or float (default: bsp)
 #yabai -m config layout bsp
