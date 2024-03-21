@@ -4,7 +4,7 @@ TIMER_FILE="/tmp/sketchybar_timers.json"
 
 initialize_timers() {
   if [ ! -f "$TIMER_FILE" ]; then
-    echo '{"timer_1": {"end_time": null, "duration": 1500, "remaining": null}, "timer_2": {"end_time": null, "duration": 1200, "remaining": null}, "timer_3": {"end_time": null, "duration": 900, "remaining": null}}' > "$TIMER_FILE"
+    echo '{"timer_1": {"end_time": null, "duration": 10800, "remaining": null}, "timer_2": {"end_time": null, "duration": 3600, "remaining": null}, "timer_3": {"end_time": null, "duration": 3600, "remaining": null}}' > "$TIMER_FILE"
   fi
 }
 
@@ -30,9 +30,10 @@ set_remaining() {
 
 format_time() {
   remaining=$1
-  minutes=$((remaining / 60))
+  hours=$((remaining / 3600))
+  minutes=$((remaining % 3600 / 60))
   seconds=$((remaining % 60))
-  printf "%02d:%02d" $minutes $seconds
+  printf "%02d:%02d:%02d" $hours $minutes $seconds
 }
 
 case "$1" in
@@ -65,7 +66,7 @@ case "$1" in
         # Reset the timer
         set_end_time "$1" "null"
         set_remaining "$1" "null"
-        sketchybar --set timer_$1 label="00:00"
+        sketchybar --set timer_$1 label="00:00:00"
       fi
     else
       if [ "$end_time" != "null" ]; then
@@ -74,7 +75,7 @@ case "$1" in
         if [ $remaining -le 0 ]; then
           set_end_time "$1" "null"
           set_remaining "$1" "null"
-          sketchybar --set timer_$1 label="00:00"
+          sketchybar --set timer_$1 label="00:00:00"
         else
           if [ $((remaining % 300)) -eq 0 ]; then
             sketchybar --animate tanh 15 --set timer_$1 icon.y_offset=-5
@@ -86,7 +87,7 @@ case "$1" in
         if [ "$remaining" != "null" ]; then
           sketchybar --set timer_$1 label=$(format_time $remaining)
         else
-          sketchybar --set timer_$1 label="00:00"
+          sketchybar --set timer_$1 label="00:00:00"
         fi
       fi
     fi
