@@ -1,11 +1,24 @@
 #!/bin/bash
 
 TIMER_FILE="/tmp/sketchybar_timers.json"
-
+ITEMS_DIR="$HOME/.config/sketchybar/items"
+# initialize_timers() {
+#   if [ ! -f "$TIMER_FILE" ]; then
+#     echo '{"timer_1": {"end_time": null, "duration": 10800, "remaining": null}, "timer_2": {"end_time": null, "duration": 3600, "remaining": null}, "timer_3": {"end_time": null, "duration": 3600, "remaining": null}}' > "$TIMER_FILE"
+#   fi
+# }
 initialize_timers() {
-  if [ ! -f "$TIMER_FILE" ]; then
-    echo '{"timer_1": {"end_time": null, "duration": 10800, "remaining": null}, "timer_2": {"end_time": null, "duration": 3600, "remaining": null}, "timer_3": {"end_time": null, "duration": 3600, "remaining": null}}' > "$TIMER_FILE"
-  fi
+    if [ ! -f "$TIMER_FILE" ]; then
+        echo '{}' > "$TIMER_FILE"
+    fi
+}
+
+add_new_timer() {
+    local new_timer_id=$(($(jq 'keys | length' "$TIMER_FILE") + 1))
+    local new_timer_key="timer_$new_timer_id"
+    jq ". + {\"$new_timer_key\": {\"end_time\": null, \"duration\": 3600, \"remaining\": null}}" "$TIMER_FILE" > "$TIMER_FILE.tmp" && mv "$TIMER_FILE.tmp" "$TIMER_FILE"
+    # Add new timer to sketchybar (You need to decide on the color scheme or make it configurable)
+    "$ITEMS_DIR/timers.sh" add_timer $new_timer_id 0xffF94A1E
 }
 
 get_end_time() {
@@ -37,7 +50,10 @@ format_time() {
 }
 
 case "$1" in
-  "1"|"2"|"3")
+  "add")
+    add_new_timer
+    ;;
+  *[0-9]*)
     initialize_timers
     end_time=$(get_end_time "$1")
     duration=$(get_duration "$1")
