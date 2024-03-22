@@ -16,9 +16,10 @@ initialize_timers() {
 add_new_timer() {
     local new_timer_id=$(($(jq 'keys | length' "$TIMER_FILE") + 1))
     local new_timer_key="timer_$new_timer_id"
-    jq ". + {\"$new_timer_key\": {\"end_time\": null, \"duration\": 3600, \"remaining\": null}}" "$TIMER_FILE" > "$TIMER_FILE.tmp" && mv "$TIMER_FILE.tmp" "$TIMER_FILE"
-    # Add new timer to sketchybar (You need to decide on the color scheme or make it configurable)
-    "$ITEMS_DIR/timers.sh" add_timer $new_timer_id 0xffF94A1E
+    local color="0xffF94A1E"  # Default color, you can change this or make it configurable
+    local duration=3600  # Default duration, you can change this or make it configurable
+    jq ". + {\"$new_timer_key\": {\"end_time\": null, \"duration\": $duration, \"remaining\": null, \"color\": \"$color\"}}" "$TIMER_FILE" > "$TIMER_FILE.tmp" && mv "$TIMER_FILE.tmp" "$TIMER_FILE"
+    "$ITEMS_DIR/timers.sh" add_timer $new_timer_id "$color" "$duration"
 }
 
 get_end_time() {
@@ -52,9 +53,9 @@ format_time() {
 case "$1" in
   "add")
     add_new_timer
-    ;;
-  *[0-9]*)
     initialize_timers
+    ;;
+  [0-9]*) 
     end_time=$(get_end_time "$1")
     duration=$(get_duration "$1")
     remaining=$(get_remaining "$1")

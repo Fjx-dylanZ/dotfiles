@@ -78,11 +78,7 @@ sketchybar --add bracket spaces '/space\..*/'               \
                                 background.height=40 \
                                 blur_radius=10
 
-sketchybar --add bracket timers_bracket '/timer_.*/'               \
-           --set         timers_bracket background.color=0x306C5F5B \
-                                        background.corner_radius=20  \
-                                        background.height=25 \
-                                        blur_radius=8
+
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
