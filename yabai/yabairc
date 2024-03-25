@@ -35,7 +35,7 @@ yabai -m space 9 --label nine
 # float system preferences. Most of these just diable Yabai form resizing them.
 yabai -m rule --add app="^System Settings$" sticky=on manage=off
 yabai -m rule --add app="^Raycast$" sticky=off manage=off
-yabai -m rule --add app="^(Rewind.*|Music)$" title="^(Rewind.*|MiniPlayer)$" manage=off opacity=1 mouse_follows_focus=off
+yabai -m rule --add app="^(Rewind.*|Music)$" title="^(Rewind.*|MiniPlayer|Ask\sRewind)$" manage=off opacity=1 mouse_follows_focus=off
 yabai -m rule --add app="^(Todoist|Fig.*|Cisco Webex Start|Private Internet Access|DXFinderWindowServer|Airfoil|Microsoft Remote Desktop|CleanShot X|Nebula|Messages|Warp)$" manage=off
 yabai -m rule --add app="^(Homerow|1Password|Superkey|Copilot|Setapp|VampireSurvivors|Steam|Apollo|Slack|Cron|Slidepad|Things|Surge|Hologram Desktop|zoom.us|Nanoleaf Desktop|iStat Menus|iStat Menus Status|Karabiner-Elements|Sidebar|Keyboard Scroller|Karabiner-EventViewer|Finder|Keka|Alfred Preferences|Disk Utility|System Information|Activity Monitor)$" sticky=on manage=off
 yabai -m rule --add app="^WeChat$" manage=off
