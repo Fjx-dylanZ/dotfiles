@@ -12,6 +12,18 @@ lshift + alt + ctrl - t : skhd --restart-service && killall Superkey && sleep 0.
 ## Close active application
 #hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
 
+# focus space
+lalt - 1 : yabai -m space --focus 1
+lalt - 2 : yabai -m space --focus 2
+lalt - 3 : yabai -m space --focus 3
+lalt - 4 : yabai -m space --focus 4
+lalt - 5 : yabai -m space --focus 5
+lalt - 6 : yabai -m space --focus 6
+lalt - 7 : yabai -m space --focus 7
+lalt - 8 : yabai -m space --focus 8
+lalt - 9 : yabai -m space --focus 9
+lalt - 0 : yabai -m space --focus 10
+
 # test a command
 # lshift - x : terminal-notifier -message "lshift - x"
 #lshift + lalt - x : terminal-notifier -message "$(yabai -m query --windows --window | jq -re ".id")"
