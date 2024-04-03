@@ -4,8 +4,6 @@ options=(
 	hidpi=off
 	active_color=0xfff77f00
 	inactive_color=0xff3a5a40
-    background_color=0x25000000
-    blur_radius=50
 )
 
 borders "${options[@]}"
