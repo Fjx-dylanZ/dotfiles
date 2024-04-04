@@ -1,5 +1,5 @@
 options=(
-	style=square
+	style=round
 	width=6
 	hidpi=off
 	active_color=0xfff77f00
