@@ -15,7 +15,7 @@ do
     icon.padding_right=5
     background.color=0x40ffffff
     background.corner_radius=10
-    background.height=25
+    background.height=20
     label.font="sketchybar-app-font:Regular:15.0"
     label.padding_right=15
     label.y_offset=-2
