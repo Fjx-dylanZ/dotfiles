@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-read -r id floating <<< $(echo $(yabai -m query --windows --window | jq '.id, .["is-floating"]'))
+read -r id floating space <<< $(echo $(yabai -m query --windows --window | jq '.id, .["is-floating"], .space'))
+read -r space_float <<< $(echo $(yabai -m query --spaces --space $space | jq '.type'))
 tmpfile=/tmp/yabai-floating-toggle-center/$id
 
-if [ $floating = 'true' ]
+if [ $floating = 'true' -o $space_float = '"float"' ]
 then
   if [ -e $tmpfile ]
   then

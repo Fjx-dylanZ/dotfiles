@@ -13,16 +13,16 @@ lshift + alt + ctrl - t : skhd --restart-service && killall Superkey && sleep 0.
 #hyper - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
 
 # focus space
-lalt - 1 : yabai -m space --focus 1
-lalt - 2 : yabai -m space --focus 2
-lalt - 3 : yabai -m space --focus 3
-lalt - 4 : yabai -m space --focus 4
-lalt - 5 : yabai -m space --focus 5
-lalt - 6 : yabai -m space --focus 6
-lalt - 7 : yabai -m space --focus 7
-lalt - 8 : yabai -m space --focus 8
-lalt - 9 : yabai -m space --focus 9
-lalt - 0 : yabai -m space --focus 10
+hyper - 1 : yabai -m space --focus 1
+hyper - 2 : yabai -m space --focus 2
+hyper - 3 : yabai -m space --focus 3
+hyper - 4 : yabai -m space --focus 4
+hyper - 5 : yabai -m space --focus 5
+hyper - 6 : yabai -m space --focus 6
+hyper - 7 : yabai -m space --focus 7
+hyper - 8 : yabai -m space --focus 8
+hyper - 9 : yabai -m space --focus 9
+hyper - 0 : yabai -m space --focus 10
 
 # test a command
 # lshift - x : terminal-notifier -message "lshift - x"
@@ -130,16 +130,16 @@ lalt + lshift + lctrl - 0x1E :
 	yabai -m window --focus "$index"
 
 # resize window
-hyper - h : yabai -m window --resize left:-20:0 || yabai -m window --resize right:-20:0
-hyper - j : yabai -m window --resize bottom:0:20 || yabai -m window --resize top:0:20
-hyper - k : yabai -m window --resize top:0:-20 || yabai -m window --resize bottom:0:-20
-hyper - l : yabai -m window --resize right:20:0 || yabai -m window --resize left:20:0
+lalt - h : yabai -m window --resize left:-20:0 || yabai -m window --resize right:-20:0
+lalt - j : yabai -m window --resize bottom:0:20 || yabai -m window --resize top:0:20
+lalt - k : yabai -m window --resize top:0:-20 || yabai -m window --resize bottom:0:-20
+lalt - l : yabai -m window --resize right:20:0 || yabai -m window --resize left:20:0
 
 # focus window
-lalt - h : yabai -m window --focus west
-lalt - j : yabai -m window --focus south
-lalt - k : yabai -m window --focus north
-lalt - l : yabai -m window --focus east
+hyper - h : yabai -m window --focus west
+hyper - j : yabai -m window --focus south
+hyper - k : yabai -m window --focus north
+hyper - l : yabai -m window --focus east
 
 # focus floating window
 lalt - o : ~/.config/CustomScripts/focus-between-floats.sh
@@ -161,9 +161,9 @@ alt + lshift - w : yabai -m window --swap north
 alt + lshift - s : yabai -m window --swap south
 
 # focus display
-hyper - 1 : yabai -m display --focus 1 && osascript ~/.config/CustomScripts/SwitchSpaces/move-mouse.scpt
-hyper - 2 : yabai -m display --focus 2 && osascript ~/.config/CustomScripts/SwitchSpaces/move-mouse.scpt
-hyper - 3 : yabai -m display --focus 3 && osascript ~/.config/CustomScripts/SwitchSpaces/move-mouse.scpt
+lalt - 1 : yabai -m display --focus 1 && osascript ~/.config/CustomScripts/SwitchSpaces/move-mouse.scpt
+lalt - 2 : yabai -m display --focus 2 && osascript ~/.config/CustomScripts/SwitchSpaces/move-mouse.scpt
+lalt - 3 : yabai -m display --focus 3 && osascript ~/.config/CustomScripts/SwitchSpaces/move-mouse.scpt
 
 fn - f : conda run -n base zsh ~/.config/CustomScripts/notch-fullscreen.sh
 #fn - f : sudo frida -q -l ~/.config/CustomScripts/OverNotch.js -e "toggleFullScreen()" $(osascript -e 'tell application "System Events" to get unix id of first application process whose frontmost is true')
