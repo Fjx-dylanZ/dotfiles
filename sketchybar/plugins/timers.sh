@@ -50,6 +50,16 @@ format_time() {
   printf "%02d:%02d:%02d" $hours $minutes $seconds
 }
 
+# handle popup $SENDER==mouse.entered or mouse.exited
+case "$SENDER" in
+  "mouse.entered")
+    sketchybar --set timer_$1 popup.drawing=on
+    ;;
+  "mouse.exited")
+    sketchybar --set timer_$1 popup.drawing=off
+    ;;
+esac
+
 case "$1" in
   "add")
     add_new_timer

@@ -28,6 +28,14 @@ add_timer() {
                         update_freq=1 \
                         script="$PLUGIN_DIR/timers.sh $1" \
                         click_script="$PLUGIN_DIR/timers.sh $1 click" \
+        --subscribe $timer_id mouse.entered mouse.exited \
+        --add item $timer_id.delete popup.$timer_id \
+        --set $timer_id.delete label="Delete" \
+                            click_script="$PLUGIN_DIR/timers.sh $1 delete" \
+                            background.color=0x30ffffff \
+                            background.height=30 \
+                            background.corner_radius=10 \
+                            blur_radius=8 \
         --move $timer_id before timer_add
     refresh_bracket
 }
