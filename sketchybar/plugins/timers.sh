@@ -49,7 +49,24 @@ format_time() {
   seconds=$((remaining % 60))
   printf "%02d:%02d:%02d" $hours $minutes $seconds
 }
+ensure_order() {
+  json=$(cat "$TIMER_FILE")
 
+  # Extract the timer keys and sort them
+  timer_keys=$(echo "$json" | jq -r 'keys[]' | sort)
+
+  # Check if the timer keys are in the expected order
+  expected_keys=$(seq 1 $(echo "$timer_keys" | wc -l) | sed 's/^/timer_/')
+
+  if [ "$timer_keys" != "$expected_keys" ]; then
+    # Reorder the timer keys
+    reordered_json=$(echo "$json" | jq 'to_entries | sort_by(.key) | to_entries | map({key: ("timer_" + ((.key | tostring) + 1)), value: .value}) | from_entries')
+    echo "$reordered_json" > "$TIMER_FILE"
+  fi
+    # destroy all timers and re-add them in order
+    #sketchybar --remove "/timer*/"
+    #"$ITEMS_DIR/timers.sh"
+}
 # handle popup $SENDER==mouse.entered or mouse.exited
 case "$SENDER" in
   "mouse.entered")
@@ -62,8 +79,8 @@ esac
 
 case "$1" in
   "add")
+    initialize_timers 
     add_new_timer
-    initialize_timers
     ;;
   [0-9]*) 
     end_time=$(get_end_time "$1")
@@ -95,6 +112,10 @@ case "$1" in
         set_remaining "$1" "null"
         sketchybar --set timer_$1 label="00:00:00"
       fi
+    elif [ "$2" = "delete" ]; then
+      jq "del(.timer_$1)" "$TIMER_FILE" > "$TIMER_FILE.tmp" && mv "$TIMER_FILE.tmp" "$TIMER_FILE"
+      sketchybar --remove timer_$1
+      ensure_order
     else
       if [ "$end_time" != "null" ]; then
         current_time=$(date +%s)

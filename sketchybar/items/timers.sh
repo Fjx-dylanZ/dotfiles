@@ -32,8 +32,8 @@ add_timer() {
         --add item $timer_id.delete popup.$timer_id \
         --set $timer_id.delete label="Delete" \
                             click_script="$PLUGIN_DIR/timers.sh $1 delete" \
-                            background.color=0x30ffffff \
-                            background.height=30 \
+                            background.color=0x30000000\
+                            background.height=20 \
                             background.corner_radius=10 \
                             blur_radius=8 \
         --move $timer_id before timer_add
