@@ -8,7 +8,7 @@ if [ "$SENDER" = "space_windows_change" ]; then
 elif [ "$SENDER" = "window_change_yabai" ]; then
   #echo "window_change signal received" > /tmp/window_chang
   space="$(yabai -m query --spaces --space | jq -r '.index')"
-  apps="$(yabai -m query --windows --space $space | jq -r '.[].app' | uniq)"
+  apps="$(yabai -m query --windows --space $space | jq -r '.[] | select(.["is-visible"] == true) | .app' | uniq)"
   #echo "space: $space" > /tmp/window_chang
   #echo "apps: $apps" > /tmp/window_chang
 else

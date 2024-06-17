@@ -28,5 +28,5 @@ done
 sketchybar --add item chevron left \
            --set chevron icon="􀆊" label.drawing=off \
            --set chevron script="$PLUGIN_DIR/space_windows.sh" \
-           --subscribe chevron space_windows_change window_change_yabai
+           --subscribe chevron window_change_yabai
 
