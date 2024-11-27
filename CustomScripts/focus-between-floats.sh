@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Store the list of floating window IDs into an array and sorted descending
-floating_windows=($(yabai -m query --windows --space | jq '.[] | select(.["is-floating"] == true) | .id' | sort -r))
+floating_windows=($(yabai -m query --windows --space | jq '.[] | select((.["is-floating"] == true) and (.["is-visible"] == true)) | .id' | sort -r))
 # Get the ID of the currently focused window
 focused_window=$(yabai -m query --windows --space | jq -re '.[] | select(.["has-focus"] == true) | .id')
 
