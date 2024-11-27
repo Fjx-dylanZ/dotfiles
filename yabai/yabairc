@@ -9,7 +9,7 @@ sudo yabai --load-sa ## sha256 checked
 
 # Global Window Transparency
 
-yabai -m config window_shadow off
+yabai -m config window_shadow on
 yabai -m config active_window_opacity 1
 yabai -m config normal_window_opacity 1
 yabai -m config window_opacity off
